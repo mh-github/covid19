@@ -35,6 +35,16 @@ with open(sys.argv[1]) as csv_file:
             country = "China"
         if country == "Korea, South":
             country = "South Korea"
+        if country == "Gambia, The":
+            country = "Gambia"
+        if country == "Bahamas, The":
+            country = "Bahamas"
+        if country == "The Bahamas":
+            country = "Bahamas"
+        if country == "Gambia, The":
+            country = "Gambia"
+        if country == "The Gambia":
+            country = "Gambia"
 
         confirmed = deaths = recovered = 0
         row[confirmed_index] = row[confirmed_index] if row[confirmed_index] else 0
