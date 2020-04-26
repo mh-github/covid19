@@ -11,7 +11,7 @@ This created the COVID-19 directory and in this directory, every day I do a git 
 
 COVID-19 dataset is a cumulative dataset, with granular data for countries like USA and China.
 
-**cgdc.py** [cgdc = corona global daily cumulative]\
+<u>**cgdc.py** [cgdc = corona global daily cumulative]</u>\
 The Python program **cgdc.py** takes a csv file as a command-line argument, adds up the data for each country and prints them out.\
 Command I use for **cgdc.py**\
 `python3 cgdc.py  ../COVID-19/csse_covid_19_data/csse_covid_19_daily_reports/04-25-2020.csv > datasets/global_daily_cumulative/04-25-2020.`
