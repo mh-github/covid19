@@ -4,14 +4,14 @@ Simplified Covid19 data sets and programs for analysis
 There will be one file for one day. Each file will have four columns:\
 **place, confirmed, deaths, recovered**
 
-This dataset works on the John Hopkins and covid19india.org datasets.\
+This dataset works on the John Hopkins and covid19india.org datasets.
 
-I cloned https://github.com/CSSEGISandData/COVID-19.git
+I cloned https://github.com/CSSEGISandData/COVID-19.git\
 This created the COVID-19 directory and in this directory, every day I do a git pull.
 
 COVID-19 dataset is a cumulative dataset, with granular data for countries like USA and China.
 
-The Python program **cgdc.py** takes a file as a command-line argument, adds up the data for each country and prints them out.\
+The Python program **cgdc.py** takes a csv file as a command-line argument, adds up the data for each country and prints them out.\
 Command I use for **cgdc.py**\
 `python3 cgdc.py  ../COVID-19/csse_covid_19_data/csse_covid_19_daily_reports/04-25-2020.csv > datasets/global_daily_cumulative/04-25-2020.`
 
@@ -23,8 +23,8 @@ The Indian covid-19 numbers provided by [covid19india.org](https://api.covid19in
 
 The Ruby program **cidd.rb** extracts the data for one day, data of which is supplied as command line argument.\
 Command I use for **cidd.rb**\
-`ruby cidd.rb 25-Apr-20 > datasets/india_daily_delta/04-25-2020.csv`
-Notice the date format used by covid19india.org and used as command-line argument.
+`ruby cidd.rb 25-Apr-20 > datasets/india_daily_delta/04-25-2020.csv`\
+*Notice the date format used by covid19india.org and used as command-line argument.*
 
 The Ruby program **cidc.rb** calculates the cumulative data until a day by adding that day's incrementa (delta) numbers with the previous day's cumulative numbers.\
 Command I used for **cidc.rb**\
