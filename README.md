@@ -6,7 +6,7 @@ There will be one file for one day. Each file will have four columns:\
 
 This dataset works on the John Hopkins and covid19india.org datasets.
 
-I cloned https://github.com/CSSEGISandData/COVID-19.git\
+I cloned https://github.com/CSSEGISandData/COVID-19.git \
 This created the COVID-19 directory and in this directory, every day I do a git pull.
 
 COVID-19 dataset is a cumulative dataset, with granular data for countries like USA and China.
