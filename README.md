@@ -14,7 +14,7 @@ COVID-19 dataset is a cumulative dataset, with granular data for countries like 
 **cgdc.py** [cgdc = corona global daily cumulative]\
 The Python program **cgdc.py** takes a csv file as a command-line argument, adds up the data for each country and prints them out.\
 Command I use for **cgdc.py**\
-`python3 cgdc.py  ../COVID-19/csse_covid_19_data/csse_covid_19_daily_reports/04-25-2020.csv > datasets/global_daily_cumulative/04-25-2020.`
+`python3 cgdc.py  ../COVID-19/csse_covid_19_data/csse_covid_19_daily_reports/04-25-2020.csv > datasets/global_daily_cumulative/04-25-2020.csv`
 
 **cgdd.py** [cgdd = corona global daily delta]\
 The Python program **cgdd.py** calculates the delta numbers for one day by subtracting that day's cumulative numbers with the previous day cumulative numbers.\
