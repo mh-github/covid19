@@ -1,0 +1,2 @@
+class IndiaDailyCumulative < ApplicationRecord
+end

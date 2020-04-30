@@ -1,0 +1,2 @@
+class GlobalDailyDeltum < ApplicationRecord
+end

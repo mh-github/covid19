@@ -1,0 +1,2 @@
+class GlobalDailyCumulative < ApplicationRecord
+end

@@ -1,0 +1,40 @@
+ $ ruby -v
+ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux-gnu]
+
+ $ sudo gem install rails
+ $ sudo rails new dashboard
+ $ sudo apt install libsqlite3-dev
+ $ cd dashboard
+ $ sudo bundle install
+ $ sudo apt install nodejs
+ $ sudo rails webpacker:install
+Webpacker requires Node.js >= 8.16.0 and you are using 8.10.0
+Please upgrade Node.js https://nodejs.org/en/download/
+ $ rails server
+ $ sudo apt-get install libpq-dev
+ --> Gemfile: added gem 'pg'
+ $ sudo bundle install
+ $ rails g controller Dashboard cgdc cgdd cidc cidd
+ $ rails g model global_daily_cumulative --skip-migration
+ $ rails g model global_daily_delta --skip-migration
+[WARNING] The model name 'global_daily_delta' was recognized as a plural, using the singular 'global_daily_deltum' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+ $ rails g model india_daily_cumulative --skip-migration
+ $ rails g model india_daily_delta --skip-migration
+[WARNING] The model name 'india_daily_delta' was recognized as a plural, using the singular 'india_daily_deltum' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+
+ 
+=======================================================================================
+Upgrading nodejs
+https://github.com/nodesource/distributions/blob/master/README.md
+# Using Ubuntu
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt install -y nodejs
+
+## Run `sudo apt-get install -y nodejs` to install Node.js 14.x and npm
+## You may also need development tools to build native addons:
+     sudo apt-get install gcc g++ make
+## To install the Yarn package manager, run:
+     curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+     sudo apt-get update && sudo apt-get install yarn
+=======================================================================================
