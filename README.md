@@ -33,3 +33,18 @@ Command I use for **cidd.rb**\
 The Ruby program **cidc.rb** calculates the cumulative data until a day by adding that day's incrementa (delta) numbers with the previous day's cumulative numbers.\
 Command I used for **cidc.rb**\
 `ruby cidc.rb 04-25-2020 > datasets/india_daily_cumulative/04-25-2020.csv`
+
+--------------------------------------------------------------\
+**daily_all.rb**
+This Ruby program reads all the csv files in each sub-directory and \
+* Makes master files collating file content in each directory under datasets.
+* For example, content of all files in global_daily_cumulative will be collated in global_daily_cumulative.csv
+* Each line in the master file will have the data's date as the first field.
+* The files made are:
+* * global_daily_cumulative.csv
+* * global_daily_delta.csv
+* * india_daily_cumulative.csv
+* * india_daily_delta.csv
+
+Format of each file is:\
+**date, place, confirmed, deaths, recovered**
