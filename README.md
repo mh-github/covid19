@@ -4,7 +4,9 @@ Simplified Covid19 data sets and programs for analysis
 There will be one file for one day. Each file will have four columns:\
 **place, confirmed, deaths, recovered**
 
-This dataset works on the John Hopkins and covid19india.org datasets.
+This dataset works on the datasets of
+1. John Hopkins
+2. covid19india.org
 
 I cloned https://github.com/CSSEGISandData/COVID-19.git \
 This created the COVID-19 directory and in this directory, every day I do a git pull.
