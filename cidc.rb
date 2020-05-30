@@ -25,9 +25,15 @@ File.foreach(prev_cumulative_file) do |line|
 end
 
 for key in current_delta_file_data.keys
-    output_data[key] = [current_delta_file_data[key][0] + prev_cumulative_file_data[key][0],
-                        current_delta_file_data[key][1] + prev_cumulative_file_data[key][1],
-                        current_delta_file_data[key][2] + prev_cumulative_file_data[key][2]]
+    if not prev_cumulative_file_data.has_key? key 
+        output_data[key] = [current_delta_file_data[key][0],
+                            current_delta_file_data[key][1],
+                            current_delta_file_data[key][2]]
+    else
+        output_data[key] = [current_delta_file_data[key][0] + prev_cumulative_file_data[key][0],
+                            current_delta_file_data[key][1] + prev_cumulative_file_data[key][1],
+                            current_delta_file_data[key][2] + prev_cumulative_file_data[key][2]]
+    end
 end
 
 for key, value in output_data
