@@ -10,6 +10,7 @@ ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux-gnu]
  $ sudo rails webpacker:install
 Webpacker requires Node.js >= 8.16.0 and you are using 8.10.0
 Please upgrade Node.js https://nodejs.org/en/download/
+ 
  $ rails server
  $ sudo apt-get install libpq-dev
  --> Gemfile: added gem 'pg'
@@ -18,7 +19,9 @@ Please upgrade Node.js https://nodejs.org/en/download/
  $ rails g model global_daily_cumulative --skip-migration
  $ rails g model global_daily_delta --skip-migration
 [WARNING] The model name 'global_daily_delta' was recognized as a plural, using the singular 'global_daily_deltum' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+ 
  $ rails g model india_daily_cumulative --skip-migration
+ 
  $ rails g model india_daily_delta --skip-migration
 [WARNING] The model name 'india_daily_delta' was recognized as a plural, using the singular 'india_daily_deltum' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
 
