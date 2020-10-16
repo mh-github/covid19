@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
     SQL
 
     @result = ActiveRecord::Base.connection.execute(query)
-    render :json => @result
+    # render :json => @result
   end
 
   def cgdd

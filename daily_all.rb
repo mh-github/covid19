@@ -8,7 +8,7 @@ for sub_dir in sub_dirs
     File.open(outfile, 'w') do |f|
         Dir["datasets/#{sub_dir}/*.csv"].each do |file|
             file_date = File.basename(file).split('.')[0]
-            File.foreach(file) do |line|
+                File.foreach(file) do |line|
                 f.write(file_date,',',line)
             end
         end
