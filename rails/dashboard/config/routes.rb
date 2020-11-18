@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
     root 'home#index'
-    post 'display_router', to: 'home#display_router'
-    post 'home/display_router', to: 'home#display_router'
+    post '/display_router', to: 'home#display_router'
+    post '/home/display_router', to: 'home#display_router'
     get  'home/gdc'
     get  'home/gdd'
     get  'home/idc'
