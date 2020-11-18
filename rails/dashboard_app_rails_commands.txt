@@ -41,42 +41,8 @@ sudo apt install -y nodejs
      echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
      sudo apt-get update && sudo apt-get install yarn
 =======================================================================================
-Passenger + Apache
-https://www.phusionpassenger.com/library/walkthroughs/deploy/ruby/ownserver/apache/oss/bionic/install_passenger.html
-Step 1: install Passenger packages
-# Install our PGP key and add HTTPS support for APT
-sudo apt-get install -y dirmngr gnupg
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
-sudo apt-get install -y apt-transport-https ca-certificates
 
 
-sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main > /etc/apt/sources.list.d/passenger.list'
-sudo apt-get update
-
-
-sudo apt-get install -y libapache2-mod-passenger
-
-a2dissite 000-default
-a2ensite testapp
-
-Step 2: enable the Passenger Apache module and restart Apache
-apt install apache2
-sudo a2enmod passenger
-sudo apache2ctl restart
-[some gobbledygoook messsages]
-systemctl restart apache2
-
-Step 3: check installation
-apt-get install apache2-dev
-/usr/bin/passenger-config validate-install
-/usr/sbin/passenger-memory-stats
-
-Step 4: update regularly
-apt-get update
-apt-get upgrade
-
-https://www.phusionpassenger.com/library/walkthroughs/deploy/ruby/ownserver/apache/oss/bionic/deploy_app.html
-3.1 Determine the Ruby command that Passenger should use
 ==============================
 https://www.phusionpassenger.com/docs/advanced_guides/install_and_upgrade/nginx/install/oss/bionic.html
 Step 1: install Passenger packages
@@ -105,4 +71,16 @@ sudo /usr/bin/passenger-config validate-install
 
 sudo /usr/sbin/passenger-memory-stats
 
+
+==============================
+Installing PostgreSQL on Ubuntu
+
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
+apt update
+apt install postgresql postgresql-contrib
+pg_ctlcluster 13 main start
+su postgres
+psql
+\l
 

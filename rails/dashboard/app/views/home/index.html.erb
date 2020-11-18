@@ -1,0 +1,25 @@
+<!-- %= line_chart Gdc.group_by_day(:date).count %> -->
+<!--
+    <%= line_chart [{name: "Confirmed", data: @confirmed},
+                    {name: "Deaths",    data: @deaths},
+                    {name: "Recovered", data: @recovered}]
+    %>
+
+
+<%= form_with(url: "/display_router") do %>
+    <%= select_tag "country", options_for_select(Countries) %>
+    <input type="date" name="start_date" id="start_date"/>
+    <br/> <br/> <br/>
+
+    <%= submit_tag("GDC") %>
+    <%= submit_tag("GDD") %>
+    <%= submit_tag("IDC") %>
+    <%= submit_tag("IDD") %>
+<% end %>
+-->
+<div class="container">
+    <%= render 'form' %>
+    <% if @error != nil %>
+        <%= @error %>
+    <% end %>
+</div>

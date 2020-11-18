@@ -15,3 +15,17 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+require("chartkick")
+require("chart.js")
+require("bootstrap")
+require("flatpickr")
+
+import flatpickr from "flatpickr";
+
+document.addEventListener("turbolinks:load", () => {
+    $('[data-tooltip-display="true"]').tooltip(),
+    flatpickr("[class='flatpickr']", {})
+})
+
+// stylesheets
+require("../stylesheets/application.scss")
