@@ -70,15 +70,15 @@ delete from india_daily_delta;
     # To make that entry work, do not specify a hostname or port for psql, then it will use a "local" connection through named pipes.
 
     # Alternatively, you can local with host and then add 127.0.0.1 as the (client) IP address to "trust".
-
+$ pg_ctlcluster 13 main start
 $ su postgres
-psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy global_daily_cumulative(date, place, confirmed, deaths, recovered) FROM '/var/www/covid19/global_daily_cumulative.csv' DELIMITER ',' CSV;"
+psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy global_daily_cumulative(date, place, confirmed, deaths, recovered) FROM '/var/www/datasets/covid19/global_daily_cumulative.csv' DELIMITER ',' CSV;"
 
-psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy global_daily_delta(date, place, confirmed, deaths, recovered) FROM '/var/www/covid19/global_daily_delta.csv' DELIMITER ',' CSV;"
+psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy global_daily_delta(date, place, confirmed, deaths, recovered) FROM '/var/www/datasets/covid19/global_daily_delta.csv' DELIMITER ',' CSV;"
 
-psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_cumulative(date, place, confirmed, deaths, recovered) FROM '/var/www/covid19/india_daily_cumulative.csv' DELIMITER ',' CSV;"
+psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_cumulative(date, place, confirmed, deaths, recovered) FROM '/var/www/datasets/covid19/india_daily_cumulative.csv' DELIMITER ',' CSV;"
 
-psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_delta(date, place, confirmed, deaths, recovered) FROM '/var/www/covid19/india_daily_delta.csv' DELIMITER ',' CSV;"
+psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_delta(date, place, confirmed, deaths, recovered) FROM '/var/www/datasets/covid19/india_daily_delta.csv' DELIMITER ',' CSV;"
 
 select count(*) from global_daily_cumulative;
 select count(*) from global_daily_delta;
