@@ -47,6 +47,12 @@ ALTER DATABASE covid19 SET datestyle TO "ISO, MDY";
 # list tables
 \dt
 
+delete from global_daily_cumulative;
+delete from global_daily_delta;
+delete from india_daily_cumulative;
+delete from india_daily_delta;
+
+
 # bulk copy commands for the four tables
 "C:\Program Files\PostgreSQL\13\bin\psql.exe" -h localhost -U postgres -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy global_daily_cumulative(date, place, confirmed, deaths, recovered) FROM 'E:\Code\Corona2020\covid19\global_daily_cumulative.csv' DELIMITER ',' CSV;"
 
@@ -66,20 +72,20 @@ ALTER DATABASE covid19 SET datestyle TO "ISO, MDY";
     # Alternatively, you can local with host and then add 127.0.0.1 as the (client) IP address to "trust".
 
 $ su postgres
-psql -U postgres -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy global_daily_cumulative(date, place, confirmed, deaths, recovered) FROM '/var/www/covid19/global_daily_cumulative.csv' DELIMITER ',' CSV;"
+psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy global_daily_cumulative(date, place, confirmed, deaths, recovered) FROM '/var/www/covid19/global_daily_cumulative.csv' DELIMITER ',' CSV;"
 
 psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy global_daily_delta(date, place, confirmed, deaths, recovered) FROM '/var/www/covid19/global_daily_delta.csv' DELIMITER ',' CSV;"
 
-"C:\Program Files\PostgreSQL\13\bin\psql.exe" -h localhost -U postgres -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_cumulative(date, place, confirmed, deaths, recovered) FROM '/var/www/covid19/india_daily_cumulative.csv' DELIMITER ',' CSV;"
+psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_cumulative(date, place, confirmed, deaths, recovered) FROM '/var/www/covid19/india_daily_cumulative.csv' DELIMITER ',' CSV;"
 
-"C:\Program Files\PostgreSQL\13\bin\psql.exe" -h localhost -U postgres -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_delta(date, place, confirmed, deaths, recovered) FROM '/var/www/covid19/india_daily_delta.csv' DELIMITER ',' CSV;"
+psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_delta(date, place, confirmed, deaths, recovered) FROM '/var/www/covid19/india_daily_delta.csv' DELIMITER ',' CSV;"
 
-select count(*) from global_daily_cumulative
-select count(*) from global_daily_delta
-select count(*) from india_daily_cumulative
-select count(*) from india_daily_delta
+select count(*) from global_daily_cumulative;
+select count(*) from global_daily_delta;
+select count(*) from india_daily_cumulative;
+select count(*) from india_daily_delta;
 
-select * from global_daily_cumulative
-select * from global_daily_delta
-select * from india_daily_cumulative
-select * from india_daily_delta
+select * from global_daily_cumulative;
+select * from global_daily_delta;
+select * from india_daily_cumulative;
+select * from india_daily_delta;

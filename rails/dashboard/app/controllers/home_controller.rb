@@ -60,14 +60,18 @@ class HomeController < ApplicationController
     end
 
     def display_router
+        puts "Entered display_router method"
         @@country    = params[:country]
         @@state      = params[:state]
         graph        = params[:commit]
         @@start_date = params[:start_date]
         @@end_date   = params[:end_date]
+        puts "Parameters collected #{@@country} #{@@state} #{@@start_date} #{@@end_date} #{graph}"
 
+        puts "Before calling validate_dates"
         validate_dates @@start_date, @@end_date
-
+        puts "After calling validate_dates"
+        
         if @@error != ""
             redirect_to action: :index
         elsif graph == "GDC"
