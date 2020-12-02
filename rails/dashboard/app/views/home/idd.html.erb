@@ -9,6 +9,12 @@
     <h2>India Data Delta (daily) from <%= @start_date %> to <%= @end_date %> for <%= @place %></h2>
     <%= column_chart [{name: "Confirmed", data: @confirmed}, 
                       {name: "Recovered", data: @recovered}],
-                       stacked: true %>
-    <%= column_chart [{name: "Deaths", data: @deaths}] %>
+                     xtitle: "Date", ytitle: "Count",
+                     stacked: true
+    %>
+    <hr/>
+    <%= column_chart [{name: "Deaths", data: @deaths}],
+                     xtitle: "Date", ytitle: "Count"
+
+    %>
 <% end %>

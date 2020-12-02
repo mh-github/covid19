@@ -6,9 +6,10 @@
     <%= @error %>
 <% else %>
     <br/>
-    <h2>Global Daily Cumulative from <%= @start_date %> to <%= @end_date %> for <%= @place %></h2>
+    <h2>Daily Cumulative from <%= @start_date %> to <%= @end_date %> for <%= @place %></h2>
     <%= line_chart [{name: "Confirmed", data: @confirmed},
                     {name: "Deaths",    data: @deaths},
-                    {name: "Recovered", data: @recovered}]
+                    {name: "Recovered", data: @recovered}],
+                   xtitle: "Date", ytitle: "Count" 
     %>
 <% end %>
