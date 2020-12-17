@@ -50,3 +50,15 @@ This Ruby program reads all the csv files in each sub-directory and
 
 Format of each file is:\
 **date, place, confirmed, deaths, recovered**
+
+--------------------------------------------------------------\
+This application is hosted at 172.105.49.105/cdb
+
+
+--------------------------------------------------------------\
+Quick Steps
+-- clone this repository
+-- Create database, tables and insert data from daily_all.rb into your database. PostgreSQL steps [here](https://github.com/mh-github/covid19/blob/master/database/postgres/postgresql-commands.sql)
+-- $ cd rails/dashboard
+-- $ yarn install 
+-- $ rails server
