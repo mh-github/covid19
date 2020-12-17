@@ -60,5 +60,5 @@ Quick Steps\
 -- clone this repository\
 -- Create database, tables and insert data from daily_all.rb into your database. PostgreSQL steps [here](https://github.com/mh-github/covid19/blob/master/database/postgres/postgresql-commands.sql)\
 -- $ cd rails/dashboard\
--- $ yarn install\
+-- $ yarn add bootstrap jquery popper.js flatpickr charkick chart.js\
 -- $ rails server
