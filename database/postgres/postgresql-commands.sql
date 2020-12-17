@@ -40,13 +40,13 @@ ALTER DATABASE covid19 SET datestyle TO "ISO, MDY";
 # Restart the server after this command
 
 # bulk copy commands for the four tables
-"C:\Program Files\PostgreSQL\13\bin\psql.exe" -h localhost -U postgres -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy global_daily_cumulative(date, place, confirmed, deaths, recovered) FROM 'E:\Code\Corona2020\covid19\global_daily_cumulative.csv' DELIMITER ',' CSV;"
+set PGPASSWORD=postgres&& "C:\Program Files\PostgreSQL\13\bin\psql.exe" -h localhost -U postgres -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy global_daily_cumulative(date, place, confirmed, deaths, recovered) FROM 'E:\Code\Corona2020\covid19\global_daily_cumulative.csv' DELIMITER ',' CSV;"
 
-"C:\Program Files\PostgreSQL\13\bin\psql.exe" -h localhost -U postgres -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy global_daily_delta(date, place, confirmed, deaths, recovered) FROM 'E:\Code\Corona2020\covid19\global_daily_delta.csv' DELIMITER ',' CSV;"
+set PGPASSWORD=postgres&& "C:\Program Files\PostgreSQL\13\bin\psql.exe" -h localhost -U postgres -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy global_daily_delta(date, place, confirmed, deaths, recovered) FROM 'E:\Code\Corona2020\covid19\global_daily_delta.csv' DELIMITER ',' CSV;"
 
-"C:\Program Files\PostgreSQL\13\bin\psql.exe" -h localhost -U postgres -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_cumulative(date, place, confirmed, deaths, recovered) FROM 'E:\Code\Corona2020\covid19\india_daily_cumulative.csv' DELIMITER ',' CSV;"
+set PGPASSWORD=postgres&& "C:\Program Files\PostgreSQL\13\bin\psql.exe" -h localhost -U postgres -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_cumulative(date, place, confirmed, deaths, recovered) FROM 'E:\Code\Corona2020\covid19\india_daily_cumulative.csv' DELIMITER ',' CSV;"
 
-"C:\Program Files\PostgreSQL\13\bin\psql.exe" -h localhost -U postgres -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_delta(date, place, confirmed, deaths, recovered) FROM 'E:\Code\Corona2020\covid19\india_daily_delta.csv' DELIMITER ',' CSV;"
+set PGPASSWORD=postgres&& "C:\Program Files\PostgreSQL\13\bin\psql.exe" -h localhost -U postgres -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_delta(date, place, confirmed, deaths, recovered) FROM 'E:\Code\Corona2020\covid19\india_daily_delta.csv' DELIMITER ',' CSV;"
 
 
 # bulk copy commands for the four tables - Linux
@@ -58,6 +58,7 @@ ALTER DATABASE covid19 SET datestyle TO "ISO, MDY";
     # Alternatively, you can local with host and then add 127.0.0.1 as the (client) IP address to "trust".
 $ pg_ctlcluster 13 main start
 $ su postgres
+$ psql
 \c covid19
 
 # list tables
