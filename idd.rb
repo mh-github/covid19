@@ -1,42 +1,16 @@
-require 'rest-client'
+require 'httparty'
 require 'json'
 
-# Read in commmand-line parameter
-fetch_date  = ARGV[0]
+URL  = 'https://data.covid19india.org/v4/min/timeseries.min.json'
+data = JSON.parse(HTTParty.get(URL).to_s)
 
-response = RestClient::Request.new(
-    :method => :get,
-    :url    => 'https://api.covid19india.org/states_daily.json'
-).execute
-results = JSON.parse(response.to_str)
-
-daily_states_data = Hash.new {|hash, key| hash[key] = []}
-
-for result in results['states_daily']
-    if result['date'] == fetch_date
-        if result['status'] == 'Confirmed'
-            result.each do |key, value|
-                next if ['date', 'status'].include? key
-                daily_states_data[key][0] = value.to_i
-            end
-        end
-        
-        if result['status'] == 'Deceased'
-            result.each do |key, value|
-                next if ['date', 'status'].include? key
-                daily_states_data[key][1] = value.to_i
-            end
-        end
-
-        if result['status'] == 'Recovered'
-            result.each do |key, value|
-                next if ['date', 'status'].include? key
-                daily_states_data[key][2] = value.to_i
-            end
+for state in data.keys
+    for date in data[state]['dates'].keys
+        if data[state]['dates'][date]['delta']
+            confirmed = data[state]['dates'][date]['delta']['confirmed'] || 0
+            deceased  = data[state]['dates'][date.to_s]['delta']['deceased']  || 0
+            recovered = data[state]['dates'][date.to_s]['delta']['recovered'] || 0
+            puts "#{date},#{state},#{confirmed},#{deceased},#{recovered}"
         end
     end
-end
-
-daily_states_data.each do |key, value|
-    puts "#{key},#{value[0]},#{value[1]},#{value[2]}"
 end
