@@ -33,7 +33,7 @@ Command I use for **idd.rb**\
 
 **idc.rb** [idc = india daily cumulative]\
 The Ruby program **idc.rb** calculates the cumulative data until a day by adding that day's incrementa (delta) numbers with the previous day's cumulative numbers.\
-Command I used for *cidc.rb**\
+Command I used for **idc.rb**\
 `ruby idc.rb 04-25-2020 > datasets/india_daily_cumulative/04-25-2020.csv`
 
 --------------------------------------------------------------\
