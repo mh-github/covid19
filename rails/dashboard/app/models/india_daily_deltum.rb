@@ -1,2 +1,0 @@
-class IndiaDailyDeltum < ApplicationRecord
-end

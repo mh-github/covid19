@@ -1,23 +1,25 @@
+require 'interactor'
 require 'httparty'
 require 'json'
 
-URL  = 'https://data.covid19india.org/v4/min/timeseries.min.json'
-data = JSON.parse(HTTParty.get(URL).to_s)
+class GenerateIddData
+	include Interactor
+	
+	def call
+		url  = 'https://data.covid19india.org/v4/min/timeseries.min.json'
+		data = JSON.parse(HTTParty.get(url).to_s)
+		india_data_delta = []
 
-for state in data.keys
-    for date in data[state]['dates'].keys
-        if data[state]['dates'][date]['delta']
-            confirmed_delta = data[state]['dates'][date.to_s]['delta']['confirmed'] || 0
-            deceased_delta  = data[state]['dates'][date.to_s]['delta']['deceased']  || 0
-            recovered_delta = data[state]['dates'][date.to_s]['delta']['recovered'] || 0
-            puts "#{date},#{state},#{confirmed_delta},#{deceased_delta},#{recovered_delta}"
-        end
-		
-		if data[state]['dates'][date]['total']
-			confirmed_total = data[state]['dates'][date.to_s]['total']['confirmed'] || 0
-			deceased_total  = data[state]['dates'][date.to_s]['total']['deceased']  || 0
-			recovered_total	= data[state]['dates'][date.to_s]['total']['recovered'] || 0
-			puts "#{date},#{state},#{confirmed_total},#{deceased_total},#{recovered_total}"
+		for state in data.keys
+			for date in data[state]['dates'].keys
+				if data[state]['dates'][date]['delta']
+					confirmed = data[state]['dates'][date.to_s]['delta']['confirmed'] || 0
+					deceased  = data[state]['dates'][date.to_s]['delta']['deceased']  || 0
+					recovered = data[state]['dates'][date.to_s]['delta']['recovered'] || 0
+					india_data_delta << [date, state, confirmed, deceased, recovered]
+				end
+			end
 		end
-    end
+		context.idd = india_data_delta
+	end
 end

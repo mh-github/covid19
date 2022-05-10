@@ -87,3 +87,54 @@ postgres@localhost:~$ psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\c
 postgres@localhost:~$ psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_cumulative(date, place, confirmed, deaths, recovered) FROM '/var/www/datasets/covid19/india_daily_cumulative.csv' DELIMITER ',' CSV;"
 
 postgres@localhost:~$ psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_delta(date, place, confirmed, deaths, recovered) FROM '/var/www/datasets/covid19/india_daily_delta.csv' DELIMITER ',' CSV;"
+=====================================================================
+21-Apr-2022
+New create table scripts with id, created_at, updated_at
+
+CREATE TABLE public.global_daily_cumulative (
+	id bigserial NOT NULL,
+	"date" timestamp(6) NULL,
+	place varchar NULL,
+	confirmed int4 NULL,
+	deaths int4 NULL,
+	recovered int4 NULL,
+	created_at timestamp(6) NOT NULL,
+	updated_at timestamp(6) NOT NULL,
+	CONSTRAINT global_daily_cumulative_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.global_daily_delta (
+	id bigserial NOT NULL,
+	"date" timestamp(6) NULL,
+	place varchar NULL,
+	confirmed int4 NULL,
+	deaths int4 NULL,
+	recovered int4 NULL,
+	created_at timestamp(6) NOT NULL,
+	updated_at timestamp(6) NOT NULL,
+	CONSTRAINT global_daily_delta_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.india_daily_cumulative (
+	id bigserial NOT NULL,
+	"date" timestamp(6) NULL,
+	place varchar NULL,
+	confirmed int4 NULL,
+	deaths int4 NULL,
+	recovered int4 NULL,
+	created_at timestamp(6) NOT NULL,
+	updated_at timestamp(6) NOT NULL,
+	CONSTRAINT india_daily_cumulative_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.india_daily_delta (
+	id bigserial NOT NULL,
+	"date" timestamp(6) NULL,
+	place varchar NULL,
+	confirmed int4 NULL,
+	deaths int4 NULL,
+	recovered int4 NULL,
+	created_at timestamp(6) NOT NULL,
+	updated_at timestamp(6) NOT NULL,
+	CONSTRAINT india_daily_delta_pkey PRIMARY KEY (id)
+);

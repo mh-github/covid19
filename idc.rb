@@ -1,41 +1,25 @@
-require 'date'
+require 'interactor'
+require 'httparty'
+require 'json'
 
-arg          = ARGV[0] # in %m-%d-%Y format
-current_date = Date.strptime(arg, "%m-%d-%Y")
-prev_date    = current_date-1
-
-path1 = 'datasets/india_daily_delta/'
-path2 = 'datasets/india_daily_cumulative/'
-
-current_delta_file      = path1 + current_date.strftime("%m-%d-%Y") + '.csv'
-prev_cumulative_file    = path2 + prev_date.strftime("%m-%d-%Y") + '.csv'
-
-current_delta_file_data      = Hash.new {|hash, key| hash[key] = []}
-prev_cumulative_file_data    = Hash.new {|hash, key| hash[key] = []}
-output_data                  = Hash.new {|hash, key| hash[key] = []}
-
-File.foreach(current_delta_file) do |line|
-    line = line.split(',')
-    current_delta_file_data[line[0]] << line[1].to_i << line[2].to_i << line[3].to_i
-end
-
-File.foreach(prev_cumulative_file) do |line|
-    line = line.split(',')
-    prev_cumulative_file_data[line[0]] << line[1].to_i << line[2].to_i << line[3].to_i
-end
-
-for key in current_delta_file_data.keys
-    if not prev_cumulative_file_data.has_key? key 
-        output_data[key] = [current_delta_file_data[key][0],
-                            current_delta_file_data[key][1],
-                            current_delta_file_data[key][2]]
-    else
-        output_data[key] = [current_delta_file_data[key][0] + prev_cumulative_file_data[key][0],
-                            current_delta_file_data[key][1] + prev_cumulative_file_data[key][1],
-                            current_delta_file_data[key][2] + prev_cumulative_file_data[key][2]]
-    end
-end
-
-for key, value in output_data
-    puts "#{key},#{value[0]},#{value[1]},#{value[2]}"
+class GenerateIdcData
+	include Interactor
+	
+	def call
+		url  = 'https://data.covid19india.org/v4/min/timeseries.min.json'
+		data = JSON.parse(HTTParty.get(url).to_s)
+		india_data_cumulative = []
+		
+		for state in data.keys
+			for date in data[state]['dates'].keys
+				if data[state]['dates'][date]['total']
+					confirmed = data[state]['dates'][date.to_s]['total']['confirmed'] || 0
+					deceased  = data[state]['dates'][date.to_s]['total']['deceased']  || 0
+					recovered = data[state]['dates'][date.to_s]['total']['recovered'] || 0
+					india_data_cumulative << [date, state, confirmed, deceased, recovered]
+				end
+			end
+		end
+		context.idc = india_data_cumulative
+	end
 end
