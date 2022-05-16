@@ -28,6 +28,8 @@ class GenerateGdcData
 				country = row[country_index]
 				if country == "Mainland China"
 					country = "China"
+				elsif country == "Korea, North"
+					country = "South Korea"
 				elsif country == "Korea, South"
 					country = "South Korea"
 				elsif country == "Gambia, The"
