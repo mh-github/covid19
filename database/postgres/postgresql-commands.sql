@@ -89,7 +89,7 @@ postgres@localhost:~$ psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\c
 postgres@localhost:~$ psql -d covid19 -c "SET client_encoding TO 'UTF8';" -c "\copy india_daily_delta(date, place, confirmed, deaths, recovered) FROM '/var/www/datasets/covid19/india_daily_delta.csv' DELIMITER ',' CSV;"
 =====================================================================
 21-Apr-2022
-New create table scripts with id, created_at, updated_at
+New create table scripts with id, created_at, updated_at.
 
 CREATE TABLE public.global_daily_cumulative (
 	id bigserial NOT NULL,
