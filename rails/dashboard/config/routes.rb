@@ -1,19 +1,16 @@
 Rails.application.routes.draw do
-  # get 'dashboard/cgdc'
-  # get 'dashboard/cgdd'
-  # get 'dashboard/cidc'
-  # get 'dashboard/cidd'
+  get 'home/index'
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # get 'home/index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # Defines the root path route ("/")
+  # root "articles#index"
+
+  root 'home#index'
+  post '/display_router', to: 'home#display_router'
+  post '/home/display_router', to: 'home#display_router'
+  get  'home/gdc'
+  get  'home/gdd'
+  get  'home/idc'
+  get  'home/idd'
   
-    root 'home#index'
-    post '/display_router', to: 'home#display_router'
-    post '/home/display_router', to: 'home#display_router'
-    get  'home/gdc'
-    get  'home/gdd'
-    get  'home/idc'
-    get  'home/idd'
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

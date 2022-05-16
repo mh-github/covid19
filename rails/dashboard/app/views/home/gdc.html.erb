@@ -1,4 +1,4 @@
-<div class="container bg-primary">
+<div class="box-content md:box-content bg-cyan-700">
     <%= render 'form' %>
 </div>
 
@@ -6,7 +6,7 @@
     <%= @error %>
 <% else %>
     <br/>
-    <h2>Daily Cumulative from <%= @start_date %> to <%= @end_date %> for <%= @place %></h2>
+    <h2 class="font-bold flex justify-center">Daily Cumulative from <%= @start_date %> to <%= @end_date %> for <%= @place %></h2>
     <%= line_chart [{name: "Confirmed", data: @confirmed},
                     {name: "Deaths",    data: @deaths},
                     {name: "Recovered", data: @recovered}],

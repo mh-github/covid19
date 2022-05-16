@@ -1,40 +1,47 @@
-<div class="container bg-info">
-    <h1 align="center"><span class="bg-primary">COVID-19 Dashboard</span></h1>
-    <h6><span class="bg-info text-white">Data Available:<br/>
-    Country level from <%= Global_min_date_str %> to <%= Global_max_date_str %><br/>
-    India state level from <%= India_min_date_str %> to <%= India_max_date_str %></span></h6>
+<div class="flex justify-center text-justify">
+    <p class="text-orange-600 text-4xl font-bold">COVID-19 Dashboard</p>
+</div>
 
+<div class="flex justify-center text-justify">
+    <p class="text-blue-300 font-bold">Data Available:<br/>
+    Country level from <%= Global_min_date_str %> to <%= Global_max_date_str %>.<br/>
+    India state level from <%= India_min_date_str %> to <%= India_max_date_str %>.</p>
+</div>
+
+<div>&nbsp;</div>
+
+<div class="flex justify-center text-justify">
     <%= form_with(url: "/display_router") do %>
-
-        <!-- Start Date, End Date -->
-        <div class="row">
-            <span style="border: 3px solid;border-color:red;">
-                <%= text_field_tag 'start_date', "Select Start Date", class: 'flatpickr' %>
-                <span class="col-md-auto">&nbsp;&nbsp;&nbsp;</span>
-                <%= text_field_tag 'end_date', "Select End Date", class: 'flatpickr' %>
-            </span>
+        <div class ="border border-2 border-rose-600 rounded">
+            <%= text_field_tag :start_date, "Click to enter Start Date", data: { controller: "flatpickr" } %>
+            <span class="col-md-auto">&nbsp;&nbsp;&nbsp;</span>
+            <!-- <%= text_field_tag "end_date", "Select End Date", class: "flatpickr" %> -->
+            <%= text_field_tag :end_date, "Click to enter End Date", data: { controller: "flatpickr" } %>
         </div>
 
-        <div class="row">
-            <div class="col-md-auto">&nbsp;&nbsp;&nbsp;</div>
+        <div>&nbsp;</div>
+
+        <div class ="border border-2 border-rose-600 rounded">
+            <h6>Global (country level)</h6>
+            <%= select_tag "country", options_for_select(Countries) %>
+
+            <%= submit_tag("GDC",
+                            class: "text-center py-2 px-4 rounded-lg bg-indigo-600 text-white hover:bg-green-dark focus:outline-none", data: { tooltip_display: :true, placement: :bottom }, title: "Global Data Cumulative") %>
+            <%= submit_tag("GDD",
+                            class: "text-center py-2 px-4 rounded-lg bg-indigo-600 text-white hover:bg-green-dark focus:outline-none", data: { tooltip_display: :true, placement: :bottom }, title: "Global Data Delta") %>           
+            <span class="col-md-auto">&nbsp;&nbsp;</span>
         </div>
-        <div class="row">
-            <div style="border: 3px solid;border-color:red;" class="col-5 md-5 sm-5">
-                <h6>Global (country level)</h6>
-                <%= select_tag "country", options_for_select(Countries) %>
-                <%= submit_tag("GDC", class: "btn btn-secondary", data: {tooltip_display: :true, placement: :bottom}, title: "Global Data Cumulative")  %>
-                <%= submit_tag("GDD", class: "btn btn-secondary", data: {tooltip_display: :true, placement: :bottom}, title: "Global Data Delta (daily)")  %>
-                <span class="col-md-auto">&nbsp;&nbsp;</span>
-            </div>
-            <div class="col-md-auto">&nbsp;&nbsp;&nbsp;</div>
-            <div style="border: 3px solid;border-color:red;" class="col-5 md-5 sm-5">
-                <h6>India (state level)</h6>
-                <%= select_tag "state", options_for_select(India_states) %>
-                <%= submit_tag("IDC", class: "btn btn-secondary", data: {tooltip_display: :true, placement: :bottom}, title: "India Data Cumulative")  %>
-                <%= submit_tag("IDD", class: "btn btn-secondary", data: {tooltip_display: :true, placement: :bottom}, title: "India Data Delta (daily)")  %>
-                <span class="col-md-auto">&nbsp;&nbsp;</span>
-            </div>
+
+        <div>&nbsp;</div>
+            
+        <div class ="mx-auto border border-2 border-rose-600 rounded">
+            <h6>India (state level)</h6>
+            <%= select_tag "state", options_for_select(India_states) %>
+            <%= submit_tag("IDC",
+                            class: "text-center py-2 px-4 rounded-lg bg-indigo-600 text-white hover:bg-green-dark focus:outline-none", data: { tooltip_display: :true, placement: :bottom }, title: "India Data Cumulative") %>
+            <%= submit_tag("IDD",
+                            class: "text-center py-2 px-4 rounded-lg bg-indigo-600 text-white hover:bg-green-dark focus:outline-none", data: { tooltip_display: :true, placement: :bottom }, title: "India Data Delta") %>
+            <span class="col-md-auto">&nbsp;&nbsp;</span>
         </div>
-           
     <% end %>
 </div>
